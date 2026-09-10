@@ -9,7 +9,7 @@
             --bg: #0a0a0a;
             --text: #e0e0e0;
             --accent: #f5d742;
-            --muted: #888;
+            --muted: #aaa;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -29,63 +29,45 @@
         li { margin-bottom: 0.5rem; }
         a { color: var(--accent); }
         .section { margin-bottom: 2rem; }
+        .table-container { overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-        th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #333; }
+        th, td { text-align: left; padding: 0.75rem; border-bottom: 1px solid #333; vertical-align: top; }
         th { color: var(--accent); }
+        @media (max-width: 480px) { body { padding: 1rem; } th, td { padding: 0.5rem; } }
     </style>
 </head>
 <body>
+<main>
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last Updated: September 9, 2026</p>
+    <p class="last-updated">Last Updated: September 10, 2026</p>
 
     <div class="section">
-        <p>Filmy Camera ("we", "our", or "us") is a local-first camera app. This Privacy Policy explains what the app accesses on your iPhone or iPad and what it does not collect.</p>
+        <p>Filmy Camera ("we", "our", or "us") is a local-first camera app. This Privacy Policy explains what the app accesses on your iPhone or iPad, how local data is managed, and what happens when you choose to share a photo or contact support.</p>
     </div>
 
-    <h2>Information We Collect</h2>
-    <div class="section">
+    <h2>Information the App Uses</h2>
+    <div class="section table-container">
         <table>
-            <tr>
-                <th>Data Type</th>
-                <th>Purpose</th>
-                <th>Stored Where</th>
-            </tr>
-            <tr>
-                <td>Camera</td>
-                <td>Live preview and capture</td>
-                <td>On your device only</td>
-            </tr>
-            <tr>
-                <td>Photos</td>
-                <td>Saving finished frames and showing frames created by Filmy Camera</td>
-                <td>On your device only</td>
-            </tr>
-            <tr>
-                <td>Temporary local frame cache</td>
-                <td>Keeping the in-app roll available when Photos access is limited</td>
-                <td>On your device only; removable in Settings</td>
-            </tr>
-            <tr>
-                <td>Device motion and gravity</td>
-                <td>Optional horizon level</td>
-                <td>Processed temporarily in memory on your device; motion samples are not saved or uploaded</td>
-            </tr>
-            <tr>
-                <td>Recipe settings</td>
-                <td>Remembering your selected look and adjustments</td>
-                <td>On your device only</td>
-            </tr>
+            <thead><tr><th scope="col">Data Type</th><th scope="col">Purpose</th><th scope="col">Storage and Control</th></tr></thead>
+            <tbody>
+                <tr><td>Camera frames</td><td>Live preview and capture</td><td>Processed on your device; a finished photo is saved when you choose Save to Photos</td></tr>
+                <tr><td>Photos</td><td>Importing a selected image, saving finished frames, and showing frames created by Filmy Camera</td><td>Managed by Apple Photos and your system settings, including iCloud Photos when enabled</td></tr>
+                <tr><td>Temporary frame and share caches</td><td>Offline Roll access and preparing a photo you choose to share</td><td>In the app's local cache, excluded from backup; the local Roll cache can be cleared in Settings</td></tr>
+                <tr><td>Device motion and gravity</td><td>Optional horizon level</td><td>Processed temporarily in memory; motion samples are not saved or uploaded</td></tr>
+                <tr><td>Recipe settings and saved-frame identifiers</td><td>Remembering your selected look, adjustments, and app-created frames</td><td>Stored in the app's local preferences; system backups may include preferences according to your settings</td></tr>
+            </tbody>
         </table>
     </div>
 
     <h2>Photos and Camera Access</h2>
     <div class="section">
-        <p>Filmy Camera requests camera access for the live preview and capture flow. It requests Photos access when you save a finished frame or choose to browse the in-app gallery. The gallery enumerates frames created by Filmy Camera; it does not treat every image in a similarly named album as app-owned.</p>
+        <p>Filmy Camera requests camera access for live preview and capture. Import uses Apple's system photo picker and receives only the image you choose; importing does not require full photo-library access. Saving a finished frame requests add-only Photos access. Reading the in-app Roll is a separate, optional permission, and limited access can be managed from the Roll.</p>
+        <p>The Roll is scoped to frames created by Filmy Camera. The app does not treat every image in a similarly named album as app-owned. Denying camera access does not prevent importing and editing an existing photo.</p>
         <ul>
-            <li><strong>Your photos never leave your device</strong> unless you explicitly share them</li>
-            <li>We do not upload, analyze, or store your photos on our servers</li>
-            <li>All image processing happens locally on your device</li>
-            <li>A capped, backup-excluded local cache may be used for temporary offline roll access; you can clear it in Settings</li>
+            <li>Image processing happens on your device. The app does not upload photos, camera frames, or photo-library identifiers to a developer-operated server.</li>
+            <li>Apple Photos may download an original from iCloud or sync a saved photo according to your iCloud Photos settings. System backups may also contain app preferences or photos according to your settings.</li>
+            <li>When you choose Share, the photo is provided to the destination you select. That destination's handling of the photo is governed by its own policies.</li>
+            <li>A capped, backup-excluded local frame cache supports temporary offline Roll access. Clearing this cache does not delete originals saved in Photos.</li>
         </ul>
     </div>
 
@@ -94,14 +76,22 @@
         <p>When you enable Horizon level in Capture setup, Filmy Camera uses device-motion gravity values to show whether your device is level. Processing happens on your device. The app does not save or upload motion samples, and it stops motion updates when the aid is disabled or the camera leaves active use. Only your on/off preference is saved locally.</p>
     </div>
 
-    <h2>Data Retention</h2>
+    <h2>Data Retention and Deletion</h2>
     <div class="section">
-        <p>Your photos, Filmy Camera album, temporary local frame cache, and recipe settings remain on your device and are controlled by you. We do not retain copies of them.</p>
+        <p>Photos you save remain in Apple Photos until you delete them there or use an available app action to remove an app-created frame. Uninstalling Filmy Camera or clearing its local Roll cache does not delete those Photos originals or their iCloud copies.</p>
+        <p>The local Roll cache is temporary, storage-limited, and may be evicted by the app or operating system. Temporary share files are removed after use where possible and stale files are cleaned up on a later launch. You can clear the local Roll cache in Settings. Uninstalling the app removes its local container and preferences; any system backups remain subject to your Apple settings.</p>
+        <p>We do not maintain a server-side copy of your photo library or an account profile for the app. Information you voluntarily send to support is separate from the app's local processing.</p>
     </div>
 
-    <h2>Third-Party Services</h2>
+    <h2>Third-Party Services and Diagnostics</h2>
     <div class="section">
-        <p>Filmy Camera does not include analytics, advertising, crash-reporting, account, or subscription services. Apple provides the operating-system camera, Photos, and motion frameworks used by the app.</p>
+        <p>Filmy Camera does not include an advertising, analytics, remote crash-reporting, account, or subscription service. Apple provides the camera, Photos, system picker, motion, sharing, and operating-system services used by the app.</p>
+        <p>The app may record technical camera-recovery codes and retry state in local system logs. It does not send those logs to a developer-operated service or put photos, photo identifiers, filenames, or user-entered text into those camera-recovery messages. Any Apple-provided diagnostics are governed by your system settings and Apple's policies.</p>
+    </div>
+
+    <h2>Support Correspondence</h2>
+    <div class="section">
+        <p>When you choose to email support, we receive the email address, message, and attachments you send through our email provider. We use that information to respond to your request and investigate the issue you report. Do not include sensitive photos or other information that is not needed for support. You can ask us to delete support correspondence using the contact route below, subject to any applicable retention obligations.</p>
     </div>
 
     <h2>Children's Privacy</h2>
@@ -109,24 +99,27 @@
         <p>Filmy Camera is not directed at children under 13. We do not knowingly collect personal information from children.</p>
     </div>
 
-    <h2>Your Rights</h2>
+    <h2>Your Controls</h2>
     <div class="section">
-        <p>You can:</p>
         <ul>
-            <li>Delete app data by uninstalling Filmy Camera</li>
-            <li>Revoke camera/photo permissions in iOS Settings</li>
-            <li>Request information about data we hold (contact us below)</li>
+            <li>Revoke camera and Photos permissions in iOS or iPadOS Settings, or manage limited Photos access from the Roll.</li>
+            <li>Disable Horizon level in Capture setup.</li>
+            <li>Clear the local Roll cache in the app's Settings without deleting Photos originals.</li>
+            <li>Manage saved photos, iCloud Photos, system backups, and sharing destinations through the relevant Apple or destination-app controls.</li>
+            <li>Uninstall Filmy Camera to remove its local app container.</li>
+            <li>Contact support about information you voluntarily sent us.</li>
         </ul>
     </div>
 
     <h2>Changes to This Policy</h2>
     <div class="section">
-        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date.</p>
+        <p>We may update this Privacy Policy from time to time. The "Last Updated" date identifies the latest published revision.</p>
     </div>
 
     <h2>Contact Us</h2>
     <div class="section">
-        <p>If you have questions about this Privacy Policy, please use the <a href="support.html">Filmy Camera support page</a>.</p>
+        <p>For privacy questions or support requests, use the <a href="support.html">Filmy Camera support page</a>.</p>
     </div>
+</main>
 </body>
 </html>
